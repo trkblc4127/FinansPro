@@ -2391,3 +2391,152 @@ form {
 .mobile-bottom-nav {
     display: none;
 }
+/* =========================================
+   iPHONE DİKEY EKRAN ZORUNLU MOBİL DÜZEN
+   ========================================= */
+
+@media screen and (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: hidden !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .main {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .topbar {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 10px 12px !important;
+    }
+
+    .content {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 14px 12px 100px !important;
+    }
+
+    .page-heading {
+        min-width: 0 !important;
+        flex: 1;
+    }
+
+    .page-heading h1 {
+        font-size: 19px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .page-heading p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Izgara sistemlerini tek kolona indir */
+
+    .kpi-grid,
+    .quick-grid,
+    .summary-grid,
+    .stats-grid,
+    .dashboard-grid,
+    .report-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+
+    /* Borçlar */
+
+    .debt-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+
+    /* Paneller */
+
+    .panel,
+    .table-panel,
+    .card,
+    .debt-card {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Tabloların ekranı taşmasını engelle */
+
+    .table-scroll {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .table-scroll table {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Filtre alanı */
+
+    .filters,
+    .filter-panel {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .filters > *,
+    .filter-panel > * {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        max-width: 100%;
+    }
+
+    /* Modal */
+
+    .modal-overlay {
+        padding: 10px !important;
+    }
+
+    .modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* Rapor grafiği */
+
+    .chart-container,
+    .chart,
+    #monthlyChart {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto;
+    }
+
+}
