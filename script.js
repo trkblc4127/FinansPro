@@ -3858,3 +3858,182 @@ window.editPayment =
 
 window.deletePayment =
     deletePayment;
+/* =========================================================
+   FINANSPRO iPHONE MOBİL KONTROLLER
+   ========================================================= */
+
+(function initMobileInterface() {
+
+    if (window.__finansProMobileReady) {
+        return;
+    }
+
+    window.__finansProMobileReady = true;
+
+    function createMobileBackButton() {
+
+        const topbar = document.querySelector(".topbar");
+
+        if (!topbar) {
+            return;
+        }
+
+        if (document.querySelector(".mobile-back-btn")) {
+            return;
+        }
+
+        const heading = topbar.querySelector(".page-heading");
+
+        if (!heading) {
+            return;
+        }
+
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "mobile-back-btn";
+        button.innerHTML = "‹";
+        button.setAttribute("aria-label", "Geri");
+
+        button.addEventListener("click", function () {
+
+            if (typeof currentPage !== "undefined" &&
+                currentPage !== "dashboard") {
+
+                showPage("dashboard");
+
+            } else {
+
+                history.back();
+
+            }
+
+        });
+
+        heading.parentNode.insertBefore(button, heading);
+
+    }
+
+
+    function createMobileBottomNav() {
+
+        if (document.querySelector(".mobile-bottom-nav")) {
+            return;
+        }
+
+        const nav = document.createElement("nav");
+
+        nav.className = "mobile-bottom-nav";
+
+        nav.innerHTML = `
+            <button type="button" data-mobile-page="dashboard">
+                <span>⌂</span>
+                Ana Sayfa
+            </button>
+
+            <button type="button" data-mobile-page="income">
+                <span>↗</span>
+                Gelir
+            </button>
+
+            <button type="button" data-mobile-page="expense">
+                <span>↘</span>
+                Gider
+            </button>
+
+            <button type="button" data-mobile-page="debt">
+                <span>₺</span>
+                Borç
+            </button>
+
+            <button type="button" data-mobile-page="payment">
+                <span>✓</span>
+                Ödeme
+            </button>
+        `;
+
+        document.body.appendChild(nav);
+
+        nav.querySelectorAll("[data-mobile-page]")
+            .forEach(button => {
+
+                button.addEventListener("click", function () {
+
+                    const page =
+                        this.dataset.mobilePage;
+
+                    if (typeof showPage === "function") {
+                        showPage(page);
+                    }
+
+                });
+
+            });
+
+    }
+
+
+    function updateMobileBottomNav() {
+
+        const nav =
+            document.querySelector(".mobile-bottom-nav");
+
+        if (!nav) {
+            return;
+        }
+
+        nav.querySelectorAll("[data-mobile-page]")
+            .forEach(button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.mobilePage === currentPage
+                );
+
+            });
+
+    }
+
+
+    const originalShowPage =
+        window.showPage;
+
+    if (typeof originalShowPage === "function") {
+
+        window.showPage = function(page) {
+
+            originalShowPage(page);
+
+            updateMobileBottomNav();
+
+        };
+
+    }
+
+
+    function start() {
+
+        createMobileBackButton();
+
+        createMobileBottomNav();
+
+        updateMobileBottomNav();
+
+    }
+
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            start,
+            { once: true }
+        );
+
+    } else {
+
+        start();
+
+    }
+
+})();
