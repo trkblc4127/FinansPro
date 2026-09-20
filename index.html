@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="tr">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#12b8a6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="FinansPro">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinansPro PRO</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => {
+                console.log("FinansPro çevrimdışı kullanım aktif.");
+            })
+            .catch(error => {
+                console.error("Service Worker hatası:", error);
+            });
+    });
+}
+</script>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">₺</div>
+
+            <div>
+                <strong>FinansPro</strong>
+                <span>PRO v2</span>
+            </div>
+        </div>
+
+        <div class="sidebar-label">MENÜ</div>
+
+        <nav>
+
+            <button class="menu-btn active" data-page="dashboard">
+                <span class="menu-icon">⌂</span>
+                <span>Ana Sayfa</span>
+            </button>
+
+            <button class="menu-btn" data-page="income">
+                <span class="menu-icon">↗</span>
+                <span>Gelirler</span>
+            </button>
+
+            <button class="menu-btn" data-page="expense">
+                <span class="menu-icon">↘</span>
+                <span>Giderler</span>
+            </button>
+
+            <button class="menu-btn" data-page="debt">
+                <span class="menu-icon">₺</span>
+                <span>Borçlar</span>
+            </button>
+
+            <button class="menu-btn" data-page="payment">
+                <span class="menu-icon">✓</span>
+                <span>Ödemeler</span>
+            </button>
+
+            <button class="menu-btn" data-page="reports">
+                <span class="menu-icon">▥</span>
+                <span>Raporlar</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="backup-side-btn" id="backupSideBtn">
+                <span>⬇</span>
+                <div>
+                    <strong>Yedek Al</strong>
+                    <small>PDF • Word • Excel</small>
+                </div>
+            </button>
+
+            <button class="reset-btn" id="resetDataBtn">
+                <span>↻</span>
+                Verileri Sıfırla
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="page-heading">
+                <div class="mobile-brand">FinansPro</div>
+
+                <h1 id="pageTitle">Ana Sayfa</h1>
+
+                <p id="pageDescription">
+                    Finansal durumunuzun genel özeti
+                </p>
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-button" id="backupTopBtn" title="Yedek Al">
+                    ⬇
+                </button>
+
+                <button class="primary-btn" id="quickAddBtn">
+                    <span>＋</span>
+                    Yeni İşlem
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <div class="content">
+
+
+            <!-- DASHBOARD -->
+            <section class="page active" id="dashboardPage">
+
+                <div class="welcome-card">
+
+                    <div>
+                        <span class="welcome-small">FİNANSAL ÖZET</span>
+
+                        <h2>FinansPro'ya hoş geldiniz 👋</h2>
+
+                        <p>
+                            Gelirlerinizi, giderlerinizi, borçlarınızı ve ödemelerinizi
+                            tek ekrandan yönetin.
+                        </p>
+                    </div>
+
+                    <div class="welcome-icon">
+                        ₺
+                    </div>
+
+                </div>
+
+
+                <!-- KPI -->
+                <div class="kpi-grid">
+
+                    <div class="kpi-card balance">
+
+                        <div class="kpi-top">
+                            <span>Mevcut Bakiye</span>
+                            <div class="kpi-icon">₺</div>
+                        </div>
+
+                        <strong id="balanceKpi">₺0,00</strong>
+
+                        <small>Toplam gelir - gider - ödeme</small>
+
+                    </div>
+
+
+                    <div class="kpi-card income">
+
+                        <div class="kpi-top">
+                            <span>Toplam Gelir</span>
+                            <div class="kpi-icon">↗</div>
+                        </div>
+
+                        <strong id="incomeKpi">₺0,00</strong>
+
+                        <small id="incomeKpiInfo">0 işlem</small>
+
+                    </div>
+
+
+                    <div class="kpi-card expense">
+
+                        <div class="kpi-top">
+                            <span>Toplam Gider</span>
+                            <div class="kpi-icon">↘</div>
+                        </div>
+
+                        <strong id="expenseKpi">₺0,00</strong>
+
+                        <small id="expenseKpiInfo">0 işlem</small>
+
+                    </div>
+
+
+                    <div class="kpi-card debt">
+
+                        <div class="kpi-top">
+                            <span>Kalan Borç</span>
+                            <div class="kpi-icon">₺</div>
+                        </div>
+
+                        <strong id="debtKpi">₺0,00</strong>
+
+                        <small id="debtKpiInfo">0 aktif borç</small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+                <div class="section-title">
+                    <div>
+                        <h2>Hızlı İşlemler</h2>
+                        <p>Sık kullandığınız işlemlere hızlıca ulaşın.</p>
+                    </div>
+                </div>
+
+                <div class="quick-grid">
+
+                    <button class="quick-card income-action" data-action="income">
+                        <span class="quick-icon">↗</span>
+                        <div>
+                            <strong>Gelir Ekle</strong>
+                            <small>Yeni gelir kaydı oluştur</small>
+                        </div>
+                    </button>
+
+                    <button class="quick-card expense-action" data-action="expense">
+                        <span class="quick-icon">↘</span>
+                        <div>
+                            <strong>Gider Ekle</strong>
+                            <small>Yeni gider kaydı oluştur</small>
+                        </div>
+                    </button>
+
+                    <button class="quick-card debt-action" data-action="debt">
+                        <span class="quick-icon">₺</span>
+                        <div>
+                            <strong>Borç Ekle</strong>
+                            <small>Yeni borç oluştur</small>
+                        </div>
+                    </button>
+
+                    <button class="quick-card payment-action" data-action="payment">
+                        <span class="quick-icon">✓</span>
+                        <div>
+                            <strong>Ödeme Ekle</strong>
+                            <small>Ödeme kaydı oluştur</small>
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <!-- MONTH SUMMARY -->
+                <div class="section-title">
+                    <div>
+                        <h2>Bu Ay</h2>
+                        <p>Aylık finansal görünümünüz.</p>
+                    </div>
+                </div>
+
+                <div class="summary-grid">
+
+                    <div class="summary-card">
+                        <span>Gelir</span>
+                        <strong id="monthIncome">₺0,00</strong>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Gider</span>
+                        <strong id="monthExpense">₺0,00</strong>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Ödeme</span>
+                        <strong id="monthPayment">₺0,00</strong>
+                    </div>
+
+                    <div class="summary-card highlight">
+                        <span>Net Durum</span>
+                        <strong id="monthNet">₺0,00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-columns">
+
+                    <!-- UPCOMING -->
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Yaklaşan Ödemeler</h3>
+                                <p>Yaklaşan ve geciken ödemeler</p>
+                            </div>
+
+                            <button class="text-btn" data-page-link="payment">
+                                Tümünü Gör
+                            </button>
+                        </div>
+
+                        <div id="upcomingPayments" class="upcoming-list">
+                            <div class="empty-state">
+                                Henüz ödeme bulunmuyor.
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- RECENT -->
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Son İşlemler</h3>
+                                <p>Son finansal hareketler</p>
+                            </div>
+
+                            <button class="text-btn" data-page-link="income">
+                                İşlemler
+                            </button>
+                        </div>
+
+                        <div id="recentTransactions" class="recent-list">
+                            <div class="empty-state">
+                                Henüz işlem bulunmuyor.
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- INCOME -->
+            <section class="page" id="incomePage">
+
+                <div class="page-tools">
+
+                    <div class="page-stats">
+
+                        <div>
+                            <span>Toplam Gelir</span>
+                            <strong id="incomeTotal">₺0,00</strong>
+                        </div>
+
+                        <div>
+                            <span>İşlem Sayısı</span>
+                            <strong id="incomeCount">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Ortalama</span>
+                            <strong id="incomeAverage">₺0,00</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="primary-btn" onclick="openTransactionModal('income')">
+                        ＋ Gelir Ekle
+                    </button>
+
+                </div>
+
+
+                <div class="filter-panel">
+
+                    <input
+                        type="search"
+                        id="incomeSearch"
+                        placeholder="Gelir ara..."
+                    >
+
+                    <select id="incomeCategoryFilter">
+                        <option value="">Tüm kategoriler</option>
+                    </select>
+
+                    <select id="incomeSort">
+                        <option value="date-desc">En yeni</option>
+                        <option value="date-asc">En eski</option>
+                        <option value="amount-desc">En yüksek tutar</option>
+                        <option value="amount-asc">En düşük tutar</option>
+                    </select>
+
+                </div>
+
+
+                <div class="table-panel">
+
+                    <div class="table-scroll">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <th>Gelir</th>
+                                    <th>Kategori</th>
+                                    <th>Açıklama</th>
+                                    <th>Tutar</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="incomeTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- EXPENSE -->
+            <section class="page" id="expensePage">
+
+                <div class="page-tools">
+
+                    <div class="page-stats">
+
+                        <div>
+                            <span>Toplam Gider</span>
+                            <strong id="expenseTotal">₺0,00</strong>
+                        </div>
+
+                        <div>
+                            <span>İşlem Sayısı</span>
+                            <strong id="expenseCount">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Ortalama</span>
+                            <strong id="expenseAverage">₺0,00</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="primary-btn" onclick="openTransactionModal('expense')">
+                        ＋ Gider Ekle
+                    </button>
+
+                </div>
+
+
+                <div class="filter-panel">
+
+                    <input
+                        type="search"
+                        id="expenseSearch"
+                        placeholder="Gider ara..."
+                    >
+
+                    <select id="expenseCategoryFilter">
+                        <option value="">Tüm kategoriler</option>
+                    </select>
+
+                    <select id="expenseSort">
+                        <option value="date-desc">En yeni</option>
+                        <option value="date-asc">En eski</option>
+                        <option value="amount-desc">En yüksek tutar</option>
+                        <option value="amount-asc">En düşük tutar</option>
+                    </select>
+
+                </div>
+
+
+                <div class="table-panel">
+
+                    <div class="table-scroll">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <th>Gider</th>
+                                    <th>Kategori</th>
+                                    <th>Açıklama</th>
+                                    <th>Tutar</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="expenseTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DEBTS -->
+            <section class="page" id="debtPage">
+
+                <div class="page-tools">
+
+                    <div class="page-stats">
+
+                        <div>
+                            <span>Toplam Borç</span>
+                            <strong id="debtTotal">₺0,00</strong>
+                        </div>
+
+                        <div>
+                            <span>Ödenen</span>
+                            <strong id="debtPaid">₺0,00</strong>
+                        </div>
+
+                        <div>
+                            <span>Kalan</span>
+                            <strong id="debtRemaining">₺0,00</strong>
+                        </div>
+
+                        <div>
+                            <span>Borç Sayısı</span>
+                            <strong id="debtCount">0</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="primary-btn" onclick="openDebtModal()">
+                        ＋ Borç Ekle
+                    </button>
+
+                </div>
+
+
+                <div class="filter-panel">
+
+                    <input
+                        type="search"
+                        id="debtSearch"
+                        placeholder="Borç ara..."
+                    >
+
+                    <select id="debtStatusFilter">
+                        <option value="">Tüm borçlar</option>
+                        <option value="active">Aktif</option>
+                        <option value="completed">Tamamlandı</option>
+                    </select>
+
+                    <select id="debtSort">
+                        <option value="remaining-desc">Kalan borç</option>
+                        <option value="date-desc">Yeni eklenen</option>
+                        <option value="name-asc">İsme göre</option>
+                    </select>
+
+                </div>
+
+
+                <div id="debtGrid" class="debt-grid"></div>
+
+            </section>
+
+
+            <!-- PAYMENTS -->
+            <section class="page" id="paymentPage">
+
+                <div class="page-tools">
+
+                    <div class="page-stats">
+
+                        <div>
+                            <span>Toplam Ödeme</span>
+                            <strong id="paymentTotal">₺0,00</strong>
+                        </div>
+
+                        <div>
+                            <span>Bu Ay</span>
+                            <strong id="paymentMonthTotal">₺0,00</strong>
+                        </div>
+
+                        <div>
+                            <span>Ödeme Sayısı</span>
+                            <strong id="paymentCount">0</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="primary-btn" onclick="openPaymentModal()">
+                        ＋ Ödeme Ekle
+                    </button>
+
+                </div>
+
+
+                <div class="filter-panel">
+
+                    <input
+                        type="search"
+                        id="paymentSearch"
+                        placeholder="Ödeme ara..."
+                    >
+
+                    <select id="paymentSort">
+                        <option value="date-desc">En yeni</option>
+                        <option value="date-asc">En eski</option>
+                        <option value="amount-desc">En yüksek tutar</option>
+                        <option value="amount-asc">En düşük tutar</option>
+                    </select>
+
+                </div>
+
+
+                <div class="table-panel">
+
+                    <div class="table-scroll">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <th>Borç</th>
+                                    <th>Açıklama</th>
+                                    <th>Tutar</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="paymentTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- REPORTS -->
+            <section class="page" id="reportsPage">
+
+                <div class="report-cards">
+
+                    <div class="report-card">
+                        <span>Toplam Gelir</span>
+                        <strong id="reportIncome">₺0,00</strong>
+                    </div>
+
+                    <div class="report-card">
+                        <span>Toplam Gider</span>
+                        <strong id="reportExpense">₺0,00</strong>
+                    </div>
+
+                    <div class="report-card">
+                        <span>Toplam Ödeme</span>
+                        <strong id="reportPayment">₺0,00</strong>
+                    </div>
+
+                    <div class="report-card">
+                        <span>Kalan Borç</span>
+                        <strong id="reportDebt">₺0,00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="panel chart-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Son 6 Ay</h3>
+                            <p>Gelir ve gider karşılaştırması</p>
+                        </div>
+
+                    </div>
+
+                    <div id="monthlyChart" class="monthly-chart"></div>
+
+                </div>
+
+
+                <div class="table-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Aylık Rapor</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-scroll">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Ay</th>
+                                    <th>Gelir</th>
+                                    <th>Gider</th>
+                                    <th>Ödeme</th>
+                                    <th>Net</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="monthlyReportBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- TRANSACTION MODAL -->
+<div class="modal-overlay" id="transactionModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span id="transactionModalType">Gelir</span>
+                <h2 id="transactionModalTitle">Gelir Ekle</h2>
+            </div>
+
+            <button class="modal-close" data-close="transactionModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="transactionForm">
+
+            <input type="hidden" id="transactionId">
+            <input type="hidden" id="transactionType">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Tarih</label>
+                    <input type="date" id="transactionDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tutar (₺)</label>
+                    <input
+                        type="number"
+                        id="transactionAmount"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full">
+                    <label>Kategori</label>
+                    <select id="transactionCategory" required></select>
+                </div>
+
+                <div class="form-group full">
+                    <label>Açıklama</label>
+                    <input
+                        type="text"
+                        id="transactionName"
+                        placeholder="Örneğin: Maaş, market alışverişi..."
+                    >
+                </div>
+
+                <div class="form-group full">
+                    <label>Not</label>
+                    <textarea
+                        id="transactionNote"
+                        rows="3"
+                        placeholder="İsteğe bağlı not..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button type="button" class="secondary-btn" data-close="transactionModal">
+                    Vazgeç
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Kaydet
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- DEBT MODAL -->
+<div class="modal-overlay" id="debtModal">
+
+    <div class="modal large-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span>BORÇ YÖNETİMİ</span>
+                <h2 id="debtModalTitle">Borç Ekle</h2>
+            </div>
+
+            <button class="modal-close" data-close="debtModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="debtForm">
+
+            <input type="hidden" id="debtId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Borç Adı</label>
+                    <input
+                        type="text"
+                        id="debtName"
+                        placeholder="Örneğin: Kredi Kartı"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Banka / Kurum</label>
+                    <input
+                        type="text"
+                        id="debtInstitution"
+                        placeholder="Örneğin: Ziraat Bankası"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Toplam Borç (₺)</label>
+                    <input
+                        type="number"
+                        id="debtTotalAmount"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Taksit Tutarı (₺)</label>
+                    <input
+                        type="number"
+                        id="debtInstallmentAmount"
+                        min="0"
+                        step="0.01"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Taksit Sayısı</label>
+                    <input
+                        type="number"
+                        id="debtInstallmentCount"
+                        min="1"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Başlangıç Tarihi</label>
+                    <input type="date" id="debtStartDate">
+                </div>
+
+                <div class="form-group">
+                    <label>İlk Ödeme Tarihi</label>
+                    <input type="date" id="debtFirstPaymentDate">
+                </div>
+
+                <div class="form-group">
+                    <label>Faiz Oranı (%)</label>
+                    <input
+                        type="number"
+                        id="debtInterestRate"
+                        min="0"
+                        step="0.01"
+                    >
+                </div>
+
+                <div class="form-group full">
+                    <label>Not</label>
+                    <textarea
+                        id="debtNote"
+                        rows="3"
+                        placeholder="Borç hakkında not..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button type="button" class="secondary-btn" data-close="debtModal">
+                    Vazgeç
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Kaydet
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="paymentModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span>ÖDEME YÖNETİMİ</span>
+                <h2>Ödeme Ekle</h2>
+            </div>
+
+            <button class="modal-close" data-close="paymentModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="paymentForm">
+
+            <input type="hidden" id="paymentId">
+
+            <div class="form-grid">
+
+                <div class="form-group full">
+                    <label>Borç</label>
+                    <select id="paymentDebt" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label>Ödeme Tarihi</label>
+                    <input type="date" id="paymentDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Ödeme Tutarı (₺)</label>
+                    <input
+                        type="number"
+                        id="paymentAmount"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full">
+                    <label>Not</label>
+                    <textarea
+                        id="paymentNote"
+                        rows="3"
+                        placeholder="Ödeme hakkında not..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button type="button" class="secondary-btn" data-close="paymentModal">
+                    Vazgeç
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Kaydet
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- BACKUP MODAL -->
+<div class="modal-overlay" id="backupModal">
+
+    <div class="modal backup-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span>VERİ YEDEĞİ</span>
+                <h2>Yedek Al</h2>
+            </div>
+
+            <button class="modal-close" data-close="backupModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <p class="backup-description">
+            FinansPro verilerinizi istediğiniz formatta dışarı aktarabilirsiniz.
+        </p>
+
+
+        <div class="backup-grid">
+
+            <button class="backup-option pdf" id="exportPdfBtn">
+                <span>📄</span>
+                <strong>PDF</strong>
+                <small>Rapor olarak kaydet</small>
+            </button>
+
+            <button class="backup-option word" id="exportWordBtn">
+                <span>📝</span>
+                <strong>Word</strong>
+                <small>Word belgesi oluştur</small>
+            </button>
+
+            <button class="backup-option excel" id="exportExcelBtn">
+                <span>📊</span>
+                <strong>Excel</strong>
+                <small>Excel tablosu oluştur</small>
+            </button>
+
+            <button class="backup-option json" id="exportJsonBtn">
+                <span>💾</span>
+                <strong>JSON</strong>
+                <small>Tam veri yedeği</small>
+            </button>
+
+        </div>
+
+
+        <div class="backup-info">
+            <strong>💡 Öneri</strong>
+            <p>
+                FinansPro'yu başka bilgisayara taşımak için JSON yedeğini
+                kullanmanız en güvenli yöntemdir.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div id="toastContainer" class="toast-container"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

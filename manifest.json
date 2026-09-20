@@ -1,0 +1,23 @@
+{
+  "name": "FinansPro - Kişisel Finans",
+  "short_name": "FinansPro",
+  "description": "Kişisel gelir, gider, borç ve ödeme takip uygulaması",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5fffd",
+  "theme_color": "#12b8a6",
+  "orientation": "portrait",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
