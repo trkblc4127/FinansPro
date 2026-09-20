@@ -2929,3 +2929,278 @@ form {
         grid-template-columns: 1fr !important;
     }
 }
+/* =========================================================
+   FINANSPRO V3 - IPHONE PORTRAIT FIX
+   ========================================================= */
+
+@media only screen and (max-width: 600px) {
+
+    html,
+    body {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    .app {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .main {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .topbar {
+        display: flex !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 12px !important;
+    }
+
+    .content {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 12px 10px 100px !important;
+    }
+
+    .page {
+        display: none;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .page.active {
+        display: block !important;
+    }
+
+    /* GRIDLER */
+    .kpi-grid,
+    .quick-grid,
+    .summary-grid,
+    .dashboard-columns,
+    .report-cards,
+    .debt-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* KARTLAR */
+    .welcome-card,
+    .kpi-card,
+    .quick-card,
+    .summary-card,
+    .panel,
+    .table-panel,
+    .debt-card,
+    .report-card,
+    .chart-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* BAŞLIK */
+    .page-heading {
+        min-width: 0 !important;
+        max-width: 65% !important;
+    }
+
+    .page-heading h1 {
+        font-size: 18px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .page-heading p {
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .mobile-brand {
+        display: block !important;
+        font-size: 12px !important;
+    }
+
+    /* ÜST BUTON */
+    .top-actions {
+        flex-shrink: 0 !important;
+    }
+
+    .top-actions .primary-btn {
+        min-height: 42px !important;
+        padding: 0 10px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+    }
+
+    /* SAYFA İSTATİSTİKLERİ */
+    .page-tools {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+
+    .page-stats {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .page-stats > div {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    /* FİLTRELER */
+    .filter-panel {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .filter-panel input,
+    .filter-panel select {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        min-height: 44px !important;
+        font-size: 16px !important;
+    }
+
+    /* TABLOLAR */
+    .table-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .table-scroll {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-scroll table {
+        min-width: 620px !important;
+    }
+
+    /* BORÇLAR */
+    .debt-card {
+        overflow: hidden !important;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 8px !important;
+        overflow-y: auto !important;
+    }
+
+    .modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .form-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .form-group,
+    .form-group.full {
+        width: 100% !important;
+        min-width: 0 !important;
+        grid-column: 1 !important;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        font-size: 16px !important;
+    }
+
+    .modal-actions {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        width: 100% !important;
+        gap: 8px !important;
+    }
+
+    .modal-actions button {
+        width: 100% !important;
+        min-height: 46px !important;
+    }
+
+    /* RAPOR */
+    .chart-panel {
+        overflow: hidden !important;
+    }
+
+    .monthly-chart {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+    }
+}
+
+
+/* DAR TELEFONLAR */
+@media only screen and (max-width: 380px) {
+
+    .content {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    .page-stats {
+        grid-template-columns: 1fr !important;
+    }
+
+    .top-actions .primary-btn {
+        padding: 0 8px !important;
+        font-size: 10px !important;
+    }
+}
