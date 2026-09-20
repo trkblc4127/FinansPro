@@ -1970,4 +1970,424 @@ form {
     .toast {
         min-width: 0;
     }
+}/* =========================================================
+   FINANSPRO iPHONE MOBİL ARAYÜZ
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    body {
+        background: #f4fbfa;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .main {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255,255,255,.96);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid #e3efed;
+        height: auto;
+        min-height: 76px;
+        padding: 10px 14px;
+    }
+
+    .page-heading {
+        min-width: 0;
+        padding-left: 4px;
+    }
+
+    .page-heading h1 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .page-heading p {
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    .content {
+        padding: 16px 13px 90px;
+    }
+
+    /* Mobil geri butonu */
+
+    .mobile-back-btn {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        border: 0;
+        border-radius: 13px;
+        background: #e8fbf8;
+        color: #079b8c;
+        font-size: 23px;
+        font-weight: 700;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    .mobile-back-btn:active {
+        transform: scale(.94);
+    }
+
+    /* Topbar düzeni */
+
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .top-actions {
+        flex-shrink: 0;
+    }
+
+    .top-actions .primary-btn {
+        min-height: 42px;
+        border-radius: 13px;
+        font-size: 11px;
+        padding: 0 13px;
+    }
+
+    /* Kartlar */
+
+    .kpi-card,
+    .quick-card,
+    .summary-card,
+    .panel,
+    .table-panel,
+    .debt-card {
+        border-radius: 18px;
+    }
+
+    .kpi-card {
+        padding: 18px;
+    }
+
+    .quick-card {
+        min-height: 72px;
+        padding: 15px;
+    }
+
+    /* =========================================
+       GELİR / GİDER / ÖDEME TABLOLARINI KARTA ÇEVİR
+       ========================================= */
+
+    .table-panel {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .table-scroll {
+        overflow: visible;
+    }
+
+    .table-scroll table,
+    .table-scroll thead,
+    .table-scroll tbody,
+    .table-scroll tr,
+    .table-scroll td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-scroll thead {
+        display: none;
+    }
+
+    .table-scroll tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .table-scroll tbody tr {
+        background: #ffffff;
+        border: 1px solid #e3efed;
+        border-radius: 17px;
+        padding: 14px;
+        box-shadow: 0 5px 18px rgba(20,70,65,.06);
+    }
+
+    .table-scroll tbody td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 0;
+        padding: 7px 0;
+        min-height: 30px;
+        font-size: 13px;
+        text-align: right;
+    }
+
+    .table-scroll tbody td:first-child {
+        padding-top: 0;
+    }
+
+    .table-scroll tbody td:last-child {
+        border-top: 1px solid #edf4f3;
+        margin-top: 7px;
+        padding-top: 12px;
+        justify-content: flex-end;
+    }
+
+    .table-scroll tbody td:nth-child(1)::before {
+        content: "Tarih";
+        color: #78908d;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .table-scroll tbody td:nth-child(2)::before {
+        content: "Kayıt";
+        color: #78908d;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .table-scroll tbody td:nth-child(3)::before {
+        content: "Kategori";
+        color: #78908d;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .table-scroll tbody td:nth-child(4)::before {
+        content: "Açıklama";
+        color: #78908d;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .table-scroll tbody td:nth-child(5)::before {
+        content: "Tutar";
+        color: #78908d;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .table-scroll tbody td:last-child::before {
+        display: none;
+    }
+
+    /* Ödeme tablosunda 4 kolon var */
+
+    #paymentTableBody td:nth-child(2)::before {
+        content: "Borç";
+    }
+
+    #paymentTableBody td:nth-child(3)::before {
+        content: "Açıklama";
+    }
+
+    #paymentTableBody td:nth-child(4)::before {
+        content: "Tutar";
+    }
+
+    /* Boş kayıt mesajı */
+
+    .table-scroll tbody tr:has(.empty-state) {
+        display: block;
+        padding: 25px 15px;
+    }
+
+    .table-scroll tbody tr:has(.empty-state) td {
+        display: block;
+        text-align: center;
+    }
+
+    .table-scroll tbody tr:has(.empty-state) td::before {
+        display: none;
+    }
+
+    /* =========================================
+       DÜZENLE / SİL BUTONLARI
+       ========================================= */
+
+    .action-buttons,
+    .debt-actions {
+        display: flex;
+        gap: 9px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .small-btn {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px;
+        border-radius: 12px !important;
+        font-size: 18px !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #dbecea;
+        background: #f5fbfa;
+    }
+
+    .small-btn.delete {
+        background: #fff1f1;
+        border-color: #ffdada;
+        color: #d94b4b;
+    }
+
+    .small-btn:active {
+        transform: scale(.92);
+    }
+
+    /* Borç kartı */
+
+    .debt-card {
+        padding: 17px;
+    }
+
+    .debt-actions .small-btn {
+        flex: 1;
+        max-width: 80px;
+    }
+
+    /* Filtreler */
+
+    .filter-panel {
+        padding: 12px;
+        border-radius: 16px;
+        gap: 9px;
+    }
+
+    .filter-panel input,
+    .filter-panel select {
+        min-height: 46px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+
+    /* İstatistikler */
+
+    .page-stats {
+        gap: 9px;
+    }
+
+    .page-stats > div {
+        background: #ffffff;
+        border: 1px solid #e4efed;
+        border-radius: 14px;
+        padding: 12px;
+    }
+
+    .page-stats strong {
+        font-size: 16px;
+    }
+
+    /* Formlar */
+
+    .modal {
+        width: calc(100% - 20px);
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 22px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+        min-height: 46px;
+    }
+
+    .modal-actions {
+        position: sticky;
+        bottom: 0;
+        background: #ffffff;
+        padding-top: 12px;
+    }
+
+    .modal-actions button {
+        min-height: 48px;
+        flex: 1;
+    }
+
+    /* Alt güvenli alan - iPhone */
+
+    .content {
+        padding-bottom: calc(90px + env(safe-area-inset-bottom));
+    }
+
+}
+
+
+/* =========================================
+   MOBİL ALT MENÜ
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .mobile-bottom-nav {
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        bottom: calc(10px + env(safe-area-inset-bottom));
+        z-index: 500;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+        padding: 7px;
+        background: rgba(255,255,255,.96);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid #dcebea;
+        border-radius: 19px;
+        box-shadow: 0 8px 30px rgba(20,70,65,.14);
+    }
+
+    .mobile-bottom-nav button {
+        min-height: 54px;
+        border: 0;
+        background: transparent;
+        border-radius: 13px;
+        color: #6d8582;
+        font-size: 10px;
+        font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+    }
+
+    .mobile-bottom-nav button span {
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    .mobile-bottom-nav button.active {
+        background: #e8fbf8;
+        color: #079b8c;
+    }
+
+    .mobile-bottom-nav button:active {
+        transform: scale(.94);
+    }
+
+}
+
+
+/* Bilgisayarda gizli */
+
+.mobile-back-btn,
+.mobile-bottom-nav {
+    display: none;
 }
