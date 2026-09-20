@@ -1,4 +1,4 @@
-const CACHE_NAME = "finanspro-v3";
+const CACHE_NAME = "finanspro-v5";
 
 const FILES_TO_CACHE = [
     "./",
