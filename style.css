@@ -1971,385 +1971,355 @@ form {
         min-width: 0;
     }
 }/* =========================================================
-   FINANSPRO iPHONE MOBİL ARAYÜZ
+   FINANSPRO - TEMİZ MOBİL DÜZEN
    ========================================================= */
 
-@media (max-width: 800px) {
+.mobile-back-btn,
+.mobile-bottom-nav {
+    display: none;
+}
 
+@media screen and (max-width: 800px) {
+
+    html,
     body {
-        background: #f4fbfa;
-        -webkit-tap-highlight-color: transparent;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow-x: hidden;
     }
 
-    .main {
+    .app {
         width: 100%;
         min-width: 0;
     }
 
+    .sidebar {
+        display: none !important;
+    }
+
+    .main {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /* ÜST BAR */
+
     .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: rgba(255,255,255,.96);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border-bottom: 1px solid #e3efed;
+        width: 100%;
+        min-height: 70px;
         height: auto;
-        min-height: 76px;
         padding: 10px 14px;
+        gap: 8px;
     }
 
     .page-heading {
         min-width: 0;
-        padding-left: 4px;
+        flex: 1;
     }
 
     .page-heading h1 {
-        font-size: 20px;
-        margin: 0;
+        font-size: 19px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .page-heading p {
-        font-size: 11px;
-        margin-top: 3px;
+        font-size: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .content {
-        padding: 16px 13px 90px;
-    }
-
-    /* Mobil geri butonu */
-
-    .mobile-back-btn {
-        display: inline-flex !important;
-        align-items: center;
-        justify-content: center;
-        width: 42px;
-        height: 42px;
-        min-width: 42px;
-        border: 0;
-        border-radius: 13px;
-        background: #e8fbf8;
-        color: #079b8c;
-        font-size: 23px;
-        font-weight: 700;
-        margin-right: 8px;
-        cursor: pointer;
-    }
-
-    .mobile-back-btn:active {
-        transform: scale(.94);
-    }
-
-    /* Topbar düzeni */
-
-    .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
+    .mobile-brand {
+        display: block !important;
     }
 
     .top-actions {
         flex-shrink: 0;
     }
 
-    .top-actions .primary-btn {
-        min-height: 42px;
-        border-radius: 13px;
-        font-size: 11px;
-        padding: 0 13px;
+    .top-actions .icon-button {
+        display: none;
     }
 
-    /* Kartlar */
+    .top-actions .primary-btn {
+        min-height: 42px;
+        padding: 0 12px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
 
+    /* İÇERİK */
+
+    .content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 15px 12px 100px;
+        overflow-x: hidden;
+    }
+
+    .page {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    /* GRİDLER */
+
+    .kpi-grid,
+    .quick-grid,
+    .summary-grid,
+    .dashboard-columns,
+    .report-cards,
+    .debt-grid {
+        width: 100%;
+        min-width: 0;
+        grid-template-columns: 1fr;
+    }
+
+    /* KARTLAR */
+
+    .welcome-card,
     .kpi-card,
     .quick-card,
     .summary-card,
     .panel,
     .table-panel,
-    .debt-card {
-        border-radius: 18px;
+    .debt-card,
+    .report-card {
+        width: 100%;
+        min-width: 0;
     }
+
+    /* HOŞ GELDİN */
+
+    .welcome-card {
+        min-height: 140px;
+        padding: 20px;
+    }
+
+    .welcome-card h2 {
+        font-size: 19px;
+    }
+
+    .welcome-card p {
+        font-size: 10px;
+    }
+
+    .welcome-icon {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        font-size: 26px;
+    }
+
+    /* KPI */
 
     .kpi-card {
-        padding: 18px;
-    }
-
-    .quick-card {
-        min-height: 72px;
-        padding: 15px;
-    }
-
-    /* =========================================
-       GELİR / GİDER / ÖDEME TABLOLARINI KARTA ÇEVİR
-       ========================================= */
-
-    .table-panel {
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-    }
-
-    .table-scroll {
-        overflow: visible;
-    }
-
-    .table-scroll table,
-    .table-scroll thead,
-    .table-scroll tbody,
-    .table-scroll tr,
-    .table-scroll td {
-        display: block;
-        width: 100%;
-    }
-
-    .table-scroll thead {
-        display: none;
-    }
-
-    .table-scroll tbody {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .table-scroll tbody tr {
-        background: #ffffff;
-        border: 1px solid #e3efed;
-        border-radius: 17px;
-        padding: 14px;
-        box-shadow: 0 5px 18px rgba(20,70,65,.06);
-    }
-
-    .table-scroll tbody td {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        border: 0;
-        padding: 7px 0;
-        min-height: 30px;
-        font-size: 13px;
-        text-align: right;
-    }
-
-    .table-scroll tbody td:first-child {
-        padding-top: 0;
-    }
-
-    .table-scroll tbody td:last-child {
-        border-top: 1px solid #edf4f3;
-        margin-top: 7px;
-        padding-top: 12px;
-        justify-content: flex-end;
-    }
-
-    .table-scroll tbody td:nth-child(1)::before {
-        content: "Tarih";
-        color: #78908d;
-        font-size: 11px;
-        font-weight: 600;
-    }
-
-    .table-scroll tbody td:nth-child(2)::before {
-        content: "Kayıt";
-        color: #78908d;
-        font-size: 11px;
-        font-weight: 600;
-    }
-
-    .table-scroll tbody td:nth-child(3)::before {
-        content: "Kategori";
-        color: #78908d;
-        font-size: 11px;
-        font-weight: 600;
-    }
-
-    .table-scroll tbody td:nth-child(4)::before {
-        content: "Açıklama";
-        color: #78908d;
-        font-size: 11px;
-        font-weight: 600;
-    }
-
-    .table-scroll tbody td:nth-child(5)::before {
-        content: "Tutar";
-        color: #78908d;
-        font-size: 11px;
-        font-weight: 600;
-    }
-
-    .table-scroll tbody td:last-child::before {
-        display: none;
-    }
-
-    /* Ödeme tablosunda 4 kolon var */
-
-    #paymentTableBody td:nth-child(2)::before {
-        content: "Borç";
-    }
-
-    #paymentTableBody td:nth-child(3)::before {
-        content: "Açıklama";
-    }
-
-    #paymentTableBody td:nth-child(4)::before {
-        content: "Tutar";
-    }
-
-    /* Boş kayıt mesajı */
-
-    .table-scroll tbody tr:has(.empty-state) {
-        display: block;
-        padding: 25px 15px;
-    }
-
-    .table-scroll tbody tr:has(.empty-state) td {
-        display: block;
-        text-align: center;
-    }
-
-    .table-scroll tbody tr:has(.empty-state) td::before {
-        display: none;
-    }
-
-    /* =========================================
-       DÜZENLE / SİL BUTONLARI
-       ========================================= */
-
-    .action-buttons,
-    .debt-actions {
-        display: flex;
-        gap: 9px;
-        width: 100%;
-        justify-content: flex-end;
-    }
-
-    .small-btn {
-        width: 44px !important;
-        height: 44px !important;
-        min-width: 44px;
-        border-radius: 12px !important;
-        font-size: 18px !important;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid #dbecea;
-        background: #f5fbfa;
-    }
-
-    .small-btn.delete {
-        background: #fff1f1;
-        border-color: #ffdada;
-        color: #d94b4b;
-    }
-
-    .small-btn:active {
-        transform: scale(.92);
-    }
-
-    /* Borç kartı */
-
-    .debt-card {
         padding: 17px;
     }
 
-    .debt-actions .small-btn {
-        flex: 1;
-        max-width: 80px;
+    .kpi-card strong {
+        font-size: 21px;
     }
 
-    /* Filtreler */
+    /* SAYFA İSTATİSTİKLERİ */
 
-    .filter-panel {
-        padding: 12px;
-        border-radius: 16px;
-        gap: 9px;
+    .page-tools {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
     }
-
-    .filter-panel input,
-    .filter-panel select {
-        min-height: 46px;
-        font-size: 16px;
-        border-radius: 12px;
-    }
-
-    /* İstatistikler */
 
     .page-stats {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 9px;
     }
 
     .page-stats > div {
-        background: #ffffff;
-        border: 1px solid #e4efed;
-        border-radius: 14px;
-        padding: 12px;
+        width: 100%;
+        min-width: 0;
     }
 
-    .page-stats strong {
+    /* FİLTRE */
+
+    .filter-panel {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        padding: 10px;
+    }
+
+    .filter-panel input,
+    .filter-panel select {
+        width: 100%;
+        min-width: 0;
+        height: 46px;
         font-size: 16px;
     }
 
-    /* Formlar */
+    /* TABLOLAR */
 
-    .modal {
-        width: calc(100% - 20px);
-        max-height: 90vh;
+    .table-panel {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .table-scroll {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
+    /* DÜZENLE / SİL */
+
+    .action-buttons,
+    .debt-actions {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+    }
+
+    .small-btn {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 11px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+    }
+
+    /* BORÇLAR */
+
+    .debt-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .debt-card {
+        padding: 17px;
+        overflow: hidden;
+    }
+
+    .debt-title {
+        min-width: 0;
+    }
+
+    .debt-title strong {
+        word-break: break-word;
+    }
+
+    /* MODAL */
+
+    .modal-overlay {
+        padding: 10px;
+        align-items: flex-start;
         overflow-y: auto;
-        border-radius: 22px;
+    }
+
+    .modal,
+    .large-modal,
+    .backup-modal {
+        width: 100%;
+        max-width: 100%;
+        max-height: calc(100vh - 20px);
+        margin: 0;
+        border-radius: 18px;
+        overflow-y: auto;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group,
+    .form-group.full {
+        width: 100%;
+        min-width: 0;
+        grid-column: auto;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
+        width: 100%;
+        min-width: 0;
         font-size: 16px;
         min-height: 46px;
     }
 
     .modal-actions {
-        position: sticky;
-        bottom: 0;
-        background: #ffffff;
-        padding-top: 12px;
+        flex-direction: column-reverse;
+        gap: 8px;
     }
 
     .modal-actions button {
-        min-height: 48px;
-        flex: 1;
+        width: 100%;
+        min-height: 46px;
     }
 
-    /* Alt güvenli alan - iPhone */
+    /* YEDEKLEME */
 
-    .content {
-        padding-bottom: calc(90px + env(safe-area-inset-bottom));
+    .backup-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
-}
+    /* GRAFİK */
 
+    .monthly-chart {
+        width: 100%;
+        overflow-x: auto;
+    }
 
-/* =========================================
-   MOBİL ALT MENÜ
-   ========================================= */
+    /* BİLDİRİM */
 
-@media (max-width: 800px) {
+    .toast-container {
+        left: 10px;
+        right: 10px;
+        bottom: 80px;
+    }
+
+    .toast {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* MOBİL ALT MENÜ */
 
     .mobile-bottom-nav {
         position: fixed;
         left: 10px;
         right: 10px;
-        bottom: calc(10px + env(safe-area-inset-bottom));
+        bottom: 10px;
         z-index: 500;
+
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 5px;
+
         padding: 7px;
-        background: rgba(255,255,255,.96);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+
+        background: rgba(255,255,255,.97);
         border: 1px solid #dcebea;
         border-radius: 19px;
+
         box-shadow: 0 8px 30px rgba(20,70,65,.14);
     }
 
@@ -2361,6 +2331,7 @@ form {
         color: #6d8582;
         font-size: 10px;
         font-weight: 700;
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -2378,829 +2349,50 @@ form {
         color: #079b8c;
     }
 
-    .mobile-bottom-nav button:active {
-        transform: scale(.94);
-    }
+    /* GERİ BUTONU */
 
-}
+    .mobile-back-btn {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
 
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
 
-/* Bilgisayarda gizli */
+        border: 0;
+        border-radius: 13px;
 
-.mobile-back-btn,
-.mobile-bottom-nav {
-    display: none;
-}
-/* =========================================
-   iPHONE DİKEY EKRAN ZORUNLU MOBİL DÜZEN
-   ========================================= */
+        background: #e8fbf8;
+        color: #079b8c;
 
-@media screen and (max-width: 600px) {
-
-    html,
-    body {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        overflow-x: hidden !important;
-        margin: 0;
-        padding: 0;
-    }
-
-    * {
-        box-sizing: border-box;
-        max-width: 100%;
-    }
-
-    .sidebar {
-        display: none !important;
-    }
-
-    .main {
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .topbar {
-        width: 100% !important;
-        min-width: 0 !important;
-        padding: 10px 12px !important;
-    }
-
-    .content {
-        width: 100% !important;
-        min-width: 0 !important;
-        padding: 14px 12px 100px !important;
-    }
-
-    .page-heading {
-        min-width: 0 !important;
-        flex: 1;
-    }
-
-    .page-heading h1 {
-        font-size: 19px !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .page-heading p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Izgara sistemlerini tek kolona indir */
-
-    .kpi-grid,
-    .quick-grid,
-    .summary-grid,
-    .stats-grid,
-    .dashboard-grid,
-    .report-grid {
-        grid-template-columns: 1fr !important;
-        width: 100% !important;
-    }
-
-    /* Borçlar */
-
-    .debt-grid {
-        grid-template-columns: 1fr !important;
-        width: 100% !important;
-    }
-
-    /* Paneller */
-
-    .panel,
-    .table-panel,
-    .card,
-    .debt-card {
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    /* Tabloların ekranı taşmasını engelle */
-
-    .table-scroll {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-    }
-
-    .table-scroll table {
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    /* Filtre alanı */
-
-    .filters,
-    .filter-panel {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-
-    .filters > *,
-    .filter-panel > * {
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    input,
-    select,
-    textarea,
-    button {
-        max-width: 100%;
-    }
-
-    /* Modal */
-
-    .modal-overlay {
-        padding: 10px !important;
-    }
-
-    .modal {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-    }
-
-    /* Rapor grafiği */
-
-    .chart-container,
-    .chart,
-    #monthlyChart {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: auto;
-    }
-
-}
-/* =========================================================
-   FINANSPRO - iPHONE PORTRAIT MOBILE FIX
-   ========================================================= */
-
-@media screen and (max-width: 600px) {
-
-    html {
-        width: 100%;
-        min-width: 0 !important;
-        overflow-x: hidden !important;
-    }
-
-    body {
-        width: 100%;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow-x: hidden !important;
-    }
-
-    .app {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-        display: none !important;
-        width: 0 !important;
-    }
-
-    /* ANA ALAN */
-    .main {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* ÜST BAR */
-    .topbar {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        min-height: 70px;
-        padding: 10px 14px !important;
-        gap: 10px;
-    }
-
-    .page-heading {
-        min-width: 0 !important;
-        max-width: calc(100% - 120px) !important;
-        flex: 1 1 auto;
-    }
-
-    .page-heading h1 {
-        max-width: 100% !important;
-        font-size: 18px !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-
-    .page-heading p {
-        max-width: 100% !important;
-        font-size: 10px !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-
-    .mobile-brand {
-        display: block !important;
-    }
-
-    .top-actions {
-        flex-shrink: 0 !important;
-        min-width: 0 !important;
-    }
-
-    .top-actions .icon-button {
-        display: none !important;
-    }
-
-    .top-actions .primary-btn {
-        min-height: 42px !important;
-        padding: 0 12px !important;
-        font-size: 11px !important;
-        white-space: nowrap !important;
-    }
-
-    /* İÇERİK */
-    .content {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 14px 12px 90px !important;
-        overflow-x: hidden !important;
-    }
-
-    .page {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-
-    /* GENEL GRIDLER */
-    .kpi-grid,
-    .quick-grid,
-    .summary-grid,
-    .report-cards,
-    .dashboard-columns,
-    .debt-grid {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        grid-template-columns: 1fr !important;
-    }
-
-    /* TÜM KARTLAR */
-    .welcome-card,
-    .kpi-card,
-    .quick-card,
-    .summary-card,
-    .panel,
-    .table-panel,
-    .debt-card,
-    .report-card,
-    .chart-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-
-    /* HOŞ GELDİN KARTI */
-    .welcome-card {
-        padding: 20px !important;
-        min-height: 140px !important;
-        gap: 10px;
-    }
-
-    .welcome-card > div:first-child {
-        min-width: 0 !important;
-        flex: 1;
-    }
-
-    .welcome-card h2 {
-        font-size: 18px !important;
-        line-height: 1.25;
-    }
-
-    .welcome-card p {
-        font-size: 10px !important;
-        line-height: 1.5;
-    }
-
-    .welcome-icon {
-        flex-shrink: 0 !important;
-        width: 58px !important;
-        height: 58px !important;
-        font-size: 25px !important;
-    }
-
-    /* KPI */
-    .kpi-card {
-        padding: 17px !important;
-    }
-
-    .kpi-card strong {
-        font-size: 21px !important;
-    }
-
-    /* HIZLI İŞLEMLER */
-    .quick-card {
-        padding: 15px !important;
-    }
-
-    /* SAYFA ARAÇLARI */
-    .page-tools {
-        width: 100% !important;
-        min-width: 0 !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 12px !important;
-    }
-
-    .page-stats {
-        width: 100% !important;
-        grid-template-columns: 1fr 1fr !important;
-        min-width: 0 !important;
-    }
-
-    .page-stats > div {
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    /* FİLTRELER */
-    .filter-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        grid-template-columns: 1fr !important;
-        padding: 10px !important;
-    }
-
-    .filter-panel input,
-    .filter-panel select {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        height: 44px !important;
-        font-size: 14px !important;
-    }
-
-    /* TABLOLAR */
-    .table-panel {
-        overflow: hidden !important;
-    }
-
-    .table-scroll {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    table {
-        min-width: 650px !important;
-    }
-
-    /* BORÇ KARTLARI */
-    .debt-card {
-        padding: 17px !important;
-    }
-
-    .debt-card-top {
-        min-width: 0 !important;
-    }
-
-    .debt-title {
-        min-width: 0 !important;
-    }
-
-    .debt-title strong {
-        word-break: break-word;
-    }
-
-    /* BUTONLAR */
-    .small-btn {
-        width: 42px !important;
-        height: 42px !important;
-        min-width: 42px !important;
-        font-size: 16px !important;
-    }
-
-    .action-buttons,
-    .debt-actions {
-        gap: 8px !important;
-    }
-
-    /* RAPOR GRAFİĞİ */
-    .monthly-chart {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: auto !important;
-    }
-
-    /* MODALLAR */
-    .modal-overlay {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 10px !important;
-        align-items: flex-start !important;
-        overflow-y: auto !important;
-    }
-
-    .modal,
-    .large-modal,
-    .backup-modal {
-        width: 100% !important;
-        max-width: 100% !important;
-        max-height: calc(100vh - 20px) !important;
-        margin: 0 !important;
-        border-radius: 18px !important;
-    }
-
-    .modal-header {
-        padding: 18px !important;
-    }
-
-    form {
-        padding: 17px !important;
-    }
-
-    .form-grid {
-        width: 100% !important;
-        grid-template-columns: 1fr !important;
-    }
-
-    .form-group,
-    .form-group.full {
-        width: 100% !important;
-        min-width: 0 !important;
-        grid-column: auto !important;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-height: 44px !important;
-        font-size: 16px !important;
-    }
-
-    .modal-actions {
-        flex-direction: column-reverse !important;
-    }
-
-    .modal-actions button {
-        width: 100% !important;
-        min-height: 46px !important;
-    }
-
-    /* YEDEKLEME */
-    .backup-grid {
-        width: 100% !important;
-        grid-template-columns: 1fr 1fr !important;
-        padding: 14px !important;
-    }
-
-    .backup-option {
-        min-width: 0 !important;
-        padding: 16px 8px !important;
-    }
-
-    /* TOAST */
-    .toast-container {
-        left: 10px !important;
-        right: 10px !important;
-        bottom: 80px !important;
-    }
-
-    .toast {
-        min-width: 0 !important;
-        width: 100% !important;
+        font-size: 23px;
+        font-weight: 700;
     }
 }
 
 
-/* =========================================================
-   ÇOK DAR iPHONE EKRANLARI
-   ========================================================= */
+/* ÇOK DAR TELEFON */
 
 @media screen and (max-width: 380px) {
 
     .content {
-        padding-left: 9px !important;
-        padding-right: 9px !important;
-    }
-
-    .topbar {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-
-    .page-heading h1 {
-        font-size: 16px !important;
-    }
-
-    .top-actions .primary-btn {
-        padding: 0 9px !important;
-        font-size: 10px !important;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
     .page-stats {
-        grid-template-columns: 1fr !important;
-    }
-
-    .backup-grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-/* =========================================================
-   FINANSPRO V3 - IPHONE PORTRAIT FIX
-   ========================================================= */
-
-@media only screen and (max-width: 600px) {
-
-    html,
-    body {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow-x: hidden !important;
-    }
-
-    .app {
-        display: block !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-    }
-
-    .sidebar {
-        display: none !important;
-    }
-
-    .main {
-        display: block !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .topbar {
-        display: flex !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        padding: 12px !important;
-    }
-
-    .content {
-        display: block !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        padding: 12px 10px 100px !important;
-    }
-
-    .page {
-        display: none;
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-
-    .page.active {
-        display: block !important;
-    }
-
-    /* GRIDLER */
-    .kpi-grid,
-    .quick-grid,
-    .summary-grid,
-    .dashboard-columns,
-    .report-cards,
-    .debt-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-
-    /* KARTLAR */
-    .welcome-card,
-    .kpi-card,
-    .quick-card,
-    .summary-card,
-    .panel,
-    .table-panel,
-    .debt-card,
-    .report-card,
-    .chart-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-
-    /* BAŞLIK */
-    .page-heading {
-        min-width: 0 !important;
-        max-width: 65% !important;
-    }
-
-    .page-heading h1 {
-        font-size: 18px !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-
-    .page-heading p {
-        font-size: 11px !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-
-    .mobile-brand {
-        display: block !important;
-        font-size: 12px !important;
-    }
-
-    /* ÜST BUTON */
-    .top-actions {
-        flex-shrink: 0 !important;
+        grid-template-columns: 1fr;
     }
 
     .top-actions .primary-btn {
-        min-height: 42px !important;
-        padding: 0 10px !important;
-        font-size: 11px !important;
-        white-space: nowrap !important;
+        padding: 0 9px;
+        font-size: 10px;
     }
 
-    /* SAYFA İSTATİSTİKLERİ */
-    .page-tools {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        align-items: stretch !important;
-        gap: 12px !important;
-    }
-
-    .page-stats {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    .page-stats > div {
-        min-width: 0 !important;
-        width: 100% !important;
-    }
-
-    /* FİLTRELER */
-    .filter-panel {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        gap: 10px !important;
-    }
-
-    .filter-panel input,
-    .filter-panel select {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        min-height: 44px !important;
-        font-size: 16px !important;
-    }
-
-    /* TABLOLAR */
-    .table-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-    }
-
-    .table-scroll {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .table-scroll table {
-        min-width: 620px !important;
-    }
-
-    /* BORÇLAR */
-    .debt-card {
-        overflow: hidden !important;
-    }
-
-    /* MODAL */
-    .modal-overlay {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 8px !important;
-        overflow-y: auto !important;
-    }
-
-    .modal {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    .form-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    .form-group,
-    .form-group.full {
-        width: 100% !important;
-        min-width: 0 !important;
-        grid-column: 1 !important;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        font-size: 16px !important;
-    }
-
-    .modal-actions {
-        display: flex !important;
-        flex-direction: column-reverse !important;
-        width: 100% !important;
-        gap: 8px !important;
-    }
-
-    .modal-actions button {
-        width: 100% !important;
-        min-height: 46px !important;
-    }
-
-    /* RAPOR */
-    .chart-panel {
-        overflow: hidden !important;
-    }
-
-    .monthly-chart {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: auto !important;
-    }
-}
-
-
-/* DAR TELEFONLAR */
-@media only screen and (max-width: 380px) {
-
-    .content {
-        padding-left: 8px !important;
-        padding-right: 8px !important;
-    }
-
-    .page-stats {
-        grid-template-columns: 1fr !important;
-    }
-
-    .top-actions .primary-btn {
-        padding: 0 8px !important;
-        font-size: 10px !important;
+    .welcome-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
     }
 }
